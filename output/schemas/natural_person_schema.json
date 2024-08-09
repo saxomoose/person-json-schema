@@ -1,0 +1,219 @@
+{
+  "type": "array",
+  "items": {
+    "anyOf": [
+      {
+        "additionalProperties": false,
+        "type": "object",
+        "properties": {
+          "entityId": {
+            "type": "string"
+          },
+          "type": {
+            "const": "NaturalPerson",
+            "type": "string"
+          },
+          "attributes": {
+            "$id": "NaturalPerson",
+            "type": "object",
+            "properties": {
+              "givenName": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "familyName": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "gender": {
+                "anyOf": [
+                  {
+                    "const": "Male",
+                    "type": "string"
+                  },
+                  {
+                    "const": "Female",
+                    "type": "string"
+                  },
+                  {
+                    "const": "Unknown",
+                    "type": "string"
+                  }
+                ]
+              },
+              "email": {
+                "format": "email",
+                "type": "string"
+              },
+              "phone": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "givenName",
+              "familyName",
+              "gender",
+              "email",
+              "phone"
+            ]
+          }
+        },
+        "required": [
+          "type",
+          "attributes"
+        ]
+      },
+      {
+        "additionalProperties": false,
+        "type": "object",
+        "properties": {
+          "entityId": {
+            "type": "string"
+          },
+          "type": {
+            "const": "Birth",
+            "type": "string"
+          },
+          "attributes": {
+            "$id": "Birth",
+            "type": "object",
+            "properties": {
+              "person": {
+                "anyOf": [
+                  {
+                    "$id": "Identifier",
+                    "type": "string"
+                  },
+                  {
+                    "$id": "JsonPointer",
+                    "format": "json-pointer",
+                    "type": "string"
+                  }
+                ]
+              },
+              "birthTime": {
+                "$id": "TemporalPosition",
+                "anyOf": [
+                  {
+                    "$id": "DateTime",
+                    "format": "datetime",
+                    "type": "string"
+                  },
+                  {
+                    "$id": "Month",
+                    "type": "Date"
+                  },
+                  {
+                    "$id": "Month",
+                    "type": "string"
+                  },
+                  {
+                    "$id": "Year",
+                    "type": "string"
+                  }
+                ]
+              },
+              "birthLocation": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "person",
+              "birthTime",
+              "birthLocation"
+            ]
+          }
+        },
+        "required": [
+          "type",
+          "attributes"
+        ]
+      },
+      {
+        "additionalProperties": false,
+        "type": "object",
+        "properties": {
+          "entityId": {
+            "type": "string"
+          },
+          "type": {
+            "const": "PersonRelationship",
+            "type": "string"
+          },
+          "attributes": {
+            "$id": "PersonRelationship",
+            "type": "object",
+            "properties": {
+              "person": {
+                "anyOf": [
+                  {
+                    "$id": "Identifier",
+                    "type": "string"
+                  },
+                  {
+                    "$id": "JsonPointer",
+                    "format": "json-pointer",
+                    "type": "string"
+                  }
+                ]
+              },
+              "relative": {
+                "anyOf": [
+                  {
+                    "$id": "Identifier",
+                    "type": "string"
+                  },
+                  {
+                    "$id": "JsonPointer",
+                    "format": "json-pointer",
+                    "type": "string"
+                  }
+                ]
+              },
+              "relationshipType": {
+                "const": "Marriage",
+                "type": "string"
+              },
+              "startTime": {
+                "$id": "TemporalPosition",
+                "anyOf": [
+                  {
+                    "$id": "DateTime",
+                    "format": "datetime",
+                    "type": "string"
+                  },
+                  {
+                    "$id": "Month",
+                    "type": "Date"
+                  },
+                  {
+                    "$id": "Month",
+                    "type": "string"
+                  },
+                  {
+                    "$id": "Year",
+                    "type": "string"
+                  }
+                ]
+              }
+            },
+            "required": [
+              "person",
+              "relative",
+              "relationshipType",
+              "startTime"
+            ]
+          }
+        },
+        "required": [
+          "type",
+          "attributes"
+        ]
+      }
+    ]
+  }
+}

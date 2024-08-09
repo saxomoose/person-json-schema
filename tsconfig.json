@@ -1,0 +1,14 @@
+{
+  "compileOnSave": true,
+  "compilerOptions": {
+    "esModuleInterop": true,                          
+    "forceConsistentCasingInFileNames": true,           
+    "module": "CommonJS",
+    "outDir": "build",                       
+    "skipLibCheck": true,
+    "sourceMap": true,  
+    "strict": true,                                
+    "strictNullChecks": true,                                 /* Skip type checking all .d.ts files. */
+    "target": "ES2017",                             
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "name": "playground",
+  "repository": {
+    "type": "git"
+  },
+  "scripts": {
+    "build": "tsc",
+    "build-watch": "tsc --watch"
+  },
+  "dependencies": {
+    "zod": "^3.22.4"
+  },
+  "devDependencies": {
+    "@sinclair/typebox": "^0.32.35",
+    "@types/node": "^20.11.24",
+    "ajv": "^8.17.1",
+    "ajv-formats": "^3.0.1",
+    "jsonpointer": "^5.0.1"
+  }
+}

@@ -1,0 +1,224 @@
+{
+  "$id": "given_name_lineage",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "properties": {
+    "subject": {
+      "type": "object",
+      "properties": {
+        "identifier": {
+          "$id": "NaturalPersonIdentifier",
+          "anyOf": [
+            {
+              "$id": "InszNumber",
+              "type": "string"
+            },
+            {
+              "$id": "BisNumber",
+              "type": "string"
+            }
+          ]
+        },
+        "type": {
+          "const": "RegisteredNaturalPerson",
+          "type": "string"
+        }
+      },
+      "required": [
+        "identifier",
+        "type"
+      ]
+    },
+    "attribute": {
+      "type": "object",
+      "properties": {
+        "attribute": {
+          "const": "GivenName",
+          "type": "string"
+        }
+      },
+      "required": [
+        "attribute"
+      ]
+    },
+    "evaluationTime": {
+      "$id": "DateTime",
+      "format": "datetime",
+      "type": "string"
+    },
+    "lineage": {
+      "type": "array",
+      "items": {
+        "anyOf": [
+          {
+            "$id": "GivenNameChangeRequest",
+            "type": "object",
+            "allOf": [
+              {
+                "$id": "LegalAct",
+                "type": "object",
+                "properties": {
+                  "identifier": {
+                    "$id": "Identifier",
+                    "type": "string"
+                  },
+                  "occurenceTime": {
+                    "$id": "TemporalPosition",
+                    "anyOf": [
+                      {
+                        "$id": "DateTime",
+                        "format": "datetime",
+                        "type": "string"
+                      },
+                      {
+                        "$id": "Date",
+                        "type": "Date"
+                      },
+                      {
+                        "$id": "Month",
+                        "type": "string"
+                      },
+                      {
+                        "$id": "Year",
+                        "type": "string"
+                      }
+                    ]
+                  }
+                },
+                "required": [
+                  "identifier",
+                  "occurenceTime"
+                ]
+              },
+              {
+                "type": "object",
+                "properties": {
+                  "case": {
+                    "type": "object",
+                    "properties": {
+                      "identifier": {
+                        "$id": "Identifier",
+                        "type": "string"
+                      }
+                    },
+                    "required": [
+                      "identifier"
+                    ]
+                  }
+                },
+                "required": [
+                  "case"
+                ]
+              }
+            ]
+          },
+          {
+            "$id": "GivenNameChangeOutcome",
+            "allOf": [
+              {
+                "$id": "LegalOutcome",
+                "type": "object",
+                "allOf": [
+                  {
+                    "$id": "LegalAct",
+                    "type": "object",
+                    "properties": {
+                      "identifier": {
+                        "$id": "Identifier",
+                        "type": "string"
+                      },
+                      "occurenceTime": {
+                        "$id": "TemporalPosition",
+                        "anyOf": [
+                          {
+                            "$id": "DateTime",
+                            "format": "datetime",
+                            "type": "string"
+                          },
+                          {
+                            "$id": "Date",
+                            "type": "Date"
+                          },
+                          {
+                            "$id": "Month",
+                            "type": "string"
+                          },
+                          {
+                            "$id": "Year",
+                            "type": "string"
+                          }
+                        ]
+                      }
+                    },
+                    "required": [
+                      "identifier",
+                      "occurenceTime"
+                    ]
+                  },
+                  {
+                    "type": "object",
+                    "properties": {
+                      "case": {
+                        "type": "object",
+                        "properties": {
+                          "identifier": {
+                            "$id": "Identifier",
+                            "type": "string"
+                          }
+                        },
+                        "required": [
+                          "identifier"
+                        ]
+                      }
+                    },
+                    "required": [
+                      "case"
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "object",
+                "properties": {
+                  "document": {
+                    "type": "object",
+                    "properties": {
+                      "identifier": {
+                        "$id": "DabsNumber",
+                        "type": "string"
+                      }
+                    },
+                    "required": [
+                      "identifier"
+                    ]
+                  }
+                },
+                "required": [
+                  "document"
+                ]
+              }
+            ]
+          },
+          {
+            "type": "object",
+            "properties": {
+              "identifier": {
+                "$id": "Identifier",
+                "type": "string"
+              }
+            },
+            "required": [
+              "identifier"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "required": [
+    "subject",
+    "attribute",
+    "evaluationTime",
+    "lineage"
+  ]
+}

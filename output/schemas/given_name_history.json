@@ -1,0 +1,146 @@
+{
+  "$id": "given_name_history",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "properties": {
+    "subject": {
+      "type": "object",
+      "properties": {
+        "identifier": {
+          "$id": "NaturalPersonIdentifier",
+          "anyOf": [
+            {
+              "$id": "InszNumber",
+              "type": "string"
+            },
+            {
+              "$id": "BisNumber",
+              "type": "string"
+            }
+          ]
+        },
+        "type": {
+          "const": "RegisteredNaturalPerson",
+          "type": "string"
+        }
+      },
+      "required": [
+        "identifier",
+        "type"
+      ]
+    },
+    "attribute": {
+      "type": "object",
+      "properties": {
+        "attribute": {
+          "const": "GivenName",
+          "type": "string"
+        }
+      },
+      "required": [
+        "attribute"
+      ]
+    },
+    "history": {
+      "allOf": [
+        {
+          "type": "object",
+          "allOf": [
+            {
+              "type": "object",
+              "properties": {
+                "value": {
+                  "$id": "GivenName",
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                }
+              },
+              "required": [
+                "value"
+              ]
+            },
+            {
+              "type": "object",
+              "properties": {
+                "event": {
+                  "type": "object",
+                  "properties": {
+                    "identifier": {
+                      "$id": "Identifier",
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "identifier"
+                  ]
+                }
+              },
+              "required": [
+                "event"
+              ]
+            }
+          ]
+        },
+        {
+          "type": "object",
+          "properties": {
+            "effectivityStart": {
+              "$id": "TemporalPosition",
+              "anyOf": [
+                {
+                  "$id": "DateTime",
+                  "format": "datetime",
+                  "type": "string"
+                },
+                {
+                  "$id": "Date",
+                  "type": "Date"
+                },
+                {
+                  "$id": "Month",
+                  "type": "string"
+                },
+                {
+                  "$id": "Year",
+                  "type": "string"
+                }
+              ]
+            },
+            "effectivityEnd": {
+              "$id": "TemporalPosition",
+              "anyOf": [
+                {
+                  "$id": "DateTime",
+                  "format": "datetime",
+                  "type": "string"
+                },
+                {
+                  "$id": "Date",
+                  "type": "Date"
+                },
+                {
+                  "$id": "Month",
+                  "type": "string"
+                },
+                {
+                  "$id": "Year",
+                  "type": "string"
+                }
+              ]
+            }
+          },
+          "required": [
+            "effectivityStart"
+          ]
+        }
+      ]
+    }
+  },
+  "required": [
+    "subject",
+    "attribute",
+    "history"
+  ]
+}

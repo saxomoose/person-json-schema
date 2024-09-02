@@ -5,16 +5,16 @@
   },
   "scripts": {
     "build": "tsc",
-    "build-watch": "tsc --watch"
+    "build-watch": "tsc --watch",
+    "start": "node ./build/main.js"
   },
   "dependencies": {
-    "zod": "^3.22.4"
+    "@sinclair/typebox": "^0.32.35",
+    "ajv-formats": "^3.0.1",
+    "ajv": "^8.17.1",
+    "jsonpointer": "^5.0.1"
   },
   "devDependencies": {
-    "@sinclair/typebox": "^0.32.35",
-    "@types/node": "^20.11.24",
-    "ajv": "^8.17.1",
-    "ajv-formats": "^3.0.1",
-    "jsonpointer": "^5.0.1"
+    "@types/node": "^20.11.24"
   }
 }

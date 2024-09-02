@@ -17,8 +17,8 @@ const DomesticResidenceAddress = Type.Object({
 
 const GlobalResidenceAddress = Type.Object({
     addressLanguage: AddressLanguage,
-    subPremise: SubPremise,
-    streetNumber: StreetNumber,
+    subPremise: Type.Optional(Type.Array(Type.String(), { $id: "SubPremise" })),
+    streetNumber: Type.String(),
     streetName: Type.String(),
     localityName: Type.String(),
     postalCode: Type.String(),
@@ -36,7 +36,6 @@ const GlobalResidence = Type.Object({
     address: GlobalResidenceAddress,
 });
 
-// console.log(JSON.stringify(GlobalResidenceAddress, null, 2))
 
 export {
     DomesticResidenceAddress,

@@ -6,6 +6,7 @@
   "scripts": {
     "build": "tsc",
     "build-watch": "tsc --watch",
+    "prestart": "npm run build",
     "start": "node ./build/main.js"
   },
   "dependencies": {

@@ -3,6 +3,7 @@ import * as fs from 'fs'
 import { NaturalPersonCurrent } from "./schemas/api/current";
 import { GivenNameHistory } from "./schemas/api/given_name_history";
 import { GivenNameLineage } from "./schemas/api/given_name_lineage";
+import { GlobalLocality } from "./schemas/locality";
 
 function outputSchemaToFile(filename: string, schemaId: string, type: TSchema) {
     const schema = {
@@ -17,11 +18,4 @@ outputSchemaToFile("natural_person_current", "natural_person_current", NaturalPe
 outputSchemaToFile("given_name_history", "given_name_history", GivenNameHistory);
 outputSchemaToFile("given_name_lineage", "given_name_lineage", GivenNameLineage);
 
-const A = Type.Object({
-    a: Type.String()
-}, { $id: "A" });
-
-const B = Type.Intersect([A], { $id: "B" });
-
-
-console.log();
+console.log(JSON.stringify(GlobalLocality, null, 2));

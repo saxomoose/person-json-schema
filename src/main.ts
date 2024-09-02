@@ -17,5 +17,3 @@ function outputSchemaToFile(filename: string, schemaId: string, type: TSchema) {
 outputSchemaToFile("natural_person_current", "natural_person_current", NaturalPersonCurrent);
 outputSchemaToFile("given_name_history", "given_name_history", GivenNameHistory);
 outputSchemaToFile("given_name_lineage", "given_name_lineage", GivenNameLineage);
-
-console.log(JSON.stringify(GlobalLocality, null, 2));

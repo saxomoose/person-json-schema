@@ -1,0 +1,67 @@
+{
+  "subject": {
+    "identifier": "123456789",
+    "type": "RegisteredNaturalPerson"
+  },
+  "attributes": [
+    {
+      "attribute": "NaturalPersonRegistration",
+      "value": {
+        "person": {
+          "identifier": "123456789"
+        },
+        "register": {}
+      },
+      "effectivityStart": "2024-01-01T00:00:00Z"
+    },
+    {
+      "attribute": "GivenName",
+      "value": ["John"],
+      "effectivityStart": "2024-01-01T00:00:00Z"
+    },
+    {
+      "attribute": "FamilyName",
+      "value": ["Doe"],
+      "effectivityStart": "2024-01-01T00:00:00Z"
+    },
+    {
+      "attribute": "Sex",
+      "value": "Male",
+      "effectivityStart": "2024-01-01T00:00:00Z"
+    },
+    {
+      "attribute": "Birth",
+      "value": {
+        "person": {
+          "identifier": "123456789"
+        },
+        "birthTime": "1980-01-01",
+        "birthLocation": {
+          "localityName": "Brussels",
+          "postalCode": "1000",
+          "isoAdministrativeSubdivisionCode": ["BRU"],
+          "nisCountryCode": "056",
+          "isoAlpha2CountryCode": "BE"
+        }
+      },
+      "effectivityStart": "2024-01-01T00:00:00Z"
+    },
+    {
+      "attribute": "Death",
+      "value": {
+        "person": {
+          "identifier": "123456789"
+        },
+        "deathTime": "2070-01-01",
+        "deathLocation": {
+          "localityName": "Brussels",
+          "postalCode": "1000",
+          "isoAdministrativeSubdivisionCode": ["BRU"],
+          "nisCountryCode": "056",
+          "isoAlpha2CountryCode": "BE"
+        }
+      },
+      "effectivityStart": "2070-01-01T00:00:00Z"
+    }
+  ]
+}

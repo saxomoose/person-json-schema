@@ -4,7 +4,7 @@ import { RegisteredNaturalPerson } from "./domestic_natural_person_register";
 import { IdentifierOf } from "./identifier";
 
 const CountryRelationship = Type.Object({
-    person: RegisteredNaturalPerson,
+    person: IdentifierOf(RegisteredNaturalPerson),
     country: IdentifierOf(Country),
 });
 

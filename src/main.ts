@@ -4,6 +4,7 @@ import { NaturalPersonCurrent } from "./schemas/api/current";
 import { GivenNameHistory } from "./schemas/api/given_name_history";
 import { GivenNameLineage } from "./schemas/api/given_name_lineage";
 import { GlobalLocality } from "./schemas/locality";
+import * as Codegen from '@sinclair/typebox-codegen'
 
 function outputSchemaToFile(filename: string, schemaId: string, type: TSchema) {
     const schema = {

@@ -4,7 +4,7 @@ JSON Schema implementation of [ICEG Person](https://github.com/belgif/ICEGthema-
 
 # Dependencies
 
-`node` and `npm`
+`node` and `npm`.
 
 # Use
 

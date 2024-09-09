@@ -1,0 +1,38 @@
+{
+  "subject": {
+    "identifier": {
+      "$id": "InszNumber",
+      "type": "string",
+      "value": "12345678901"
+    },
+    "type": "RegisteredNaturalPerson"
+  },
+  "attribute": {
+    "attribute": "GivenName"
+  },
+  "evaluationTime": "2024-09-09T12:30:00Z",
+  "lineage": [
+    {
+      "$id": "GivenNameChangeRequest",
+      "identifier": "ABC123",
+      "occurenceTime": "2023-05-01T14:45:00Z",
+      "case": {
+        "identifier": "CASE456"
+      }
+    },
+    {
+      "$id": "GivenNameChangeOutcome",
+      "identifier": "DEF789",
+      "occurenceTime": "2023-06-15T10:00:00Z",
+      "case": {
+        "identifier": "CASE456"
+      },
+      "document": {
+        "identifier": "DABS101112"
+      }
+    },
+    {
+      "identifier": "GHI012"
+    }
+  ]
+}

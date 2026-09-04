@@ -8,7 +8,7 @@ import { RegisteredNaturalPerson, GivenNameChangeRequest, GivenNameChangeOutcome
 const GivenNameLineage = Type.Object({
     subject: Entity(RegisteredNaturalPerson),
     attribute: Attribute(GivenName),
-    evaluationTime: DateTime,
+    cutOffTime: DateTime,
     lineage: Type.Array(Type.Union([
         GivenNameChangeRequest,
         GivenNameChangeOutcome,

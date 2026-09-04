@@ -1,45 +1,30 @@
-import { TSchema, Type } from "@sinclair/typebox";
-import { ValueOptions, TemporalScopeOptions } from "../utils";
-import { Lineage } from "./lineage";
-import { EffectivityPeriod, RecordTime } from "./temporal";
+import { TSchema, Type } from "typebox";
+import { EffectivityPeriod } from "./temporal";
 
 const Entity = <T extends TSchema>(type: T): TSchema => {
     return Type.Object({
         identifier: Type.Index(type, ["identifier"]),
-        type: Type.Literal(type.$id as string)
+        type: Type.Literal((type as any).$id)
     })
 };
 
 const Attribute = <T extends TSchema>(type: T): TSchema => {
-    return Type.Object({
-        attribute: Type.Literal(type.$id as string)
-    })
+    return Type.Literal((type as any).$id)
 };
 
-const Value = <T extends TSchema>(type: T, valueOptions?: ValueOptions): TSchema => {
-    let schema: TSchema = Type.Object({
-        value: type
-    });
-
-    if (valueOptions?.lineage) {
-        schema = Type.Intersect([schema, Lineage])
-    }
-
-    if (valueOptions?.effectivityPeriod) {
-        schema = Type.Intersect([schema, EffectivityPeriod]);
-    }
-
-    if (valueOptions?.recordTime) {
-        schema = Type.Intersect([schema, RecordTime]);
-    }
-
-    return schema;
+const Value = <T extends TSchema>(type: T): TSchema => {
+    return Type.Intersect([
+        Type.Object({
+            value: type
+        }),
+        EffectivityPeriod
+    ]);
 };
 
-const AttributeValue = <T extends TSchema>(type: T, valueOptions?: TemporalScopeOptions): TSchema => {
+const AttributeValue = <T extends TSchema>(type: T): TSchema => {
     return Type.Intersect([
         Attribute(type),
-        Value(type, valueOptions)
+        Value(type)
     ]);
 };
 

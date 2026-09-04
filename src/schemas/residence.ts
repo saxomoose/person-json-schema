@@ -1,4 +1,4 @@
-import { Type } from "@sinclair/typebox";
+import { Type } from "typebox";
 import { Iso31661Alpha2Code } from "./iso";
 import { Residency } from "./residency";
 import { AddressLanguage as DomesticAddressLanguage, StreetName as DomesticStreetName, RegisteredAddress, StreetNumber, SubPremise } from "./domestic_address_register";

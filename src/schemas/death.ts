@@ -1,4 +1,4 @@
-import { Type } from "@sinclair/typebox";
+import { Type } from "typebox";
 import { TemporalPosition } from "./temporal";
 import { Municipality } from "./domestic_municipality_register";
 import { RegisteredNaturalPerson } from "./domestic_natural_person_register";

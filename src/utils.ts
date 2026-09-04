@@ -1,4 +1,4 @@
-import { Type, Kind, SchemaOptions, TObject, TypeRegistry, Static } from "@sinclair/typebox"
+import { Type, TSchemaOptions, TObject, Static } from "typebox"
 import { Url } from "url";
 
 async function fetchEnumValues(url: string): Promise<string[]> {
@@ -9,14 +9,14 @@ async function fetchEnumValues(url: string): Promise<string[]> {
     return await response.json();
 }
 
-TypeRegistry.Set("StringEnum", (schema: { enum: string[] }, value: unknown) => {
-    return typeof value === "string" && schema.enum.includes(value);
-});
+// TypeRegistry.Set("StringEnum", (schema: { enum: string[] }, value: unknown) => {
+//     return typeof value === "string" && schema.enum.includes(value);
+// });
 
 // This function should fetch the enumeration values from source.
-export function StringEnum<T extends string[]>(values: [...T], options: SchemaOptions = {}) {
-    return Type.Unsafe<T[number]>({ ...options, [Kind]: "StringEnum", enum: values })
-};
+// export function StringEnum<T extends string[]>(values: [...T], options: TSchemaOptions = {}) {
+//     return Type.Unsafe<T[number]>({ ...options, [Kind]: "StringEnum", enum: values })
+// };
 
 type Schema = {
     $id: Url,

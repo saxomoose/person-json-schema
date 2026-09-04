@@ -2,32 +2,27 @@
   "$id": "natural_person_current",
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "type": "object",
+  "required": [
+    "subject",
+    "attributes"
+  ],
   "properties": {
     "subject": {
       "type": "object",
-      "properties": {
-        "identifier": {
-          "$id": "NaturalPersonIdentifier",
-          "anyOf": [
-            {
-              "$id": "InszNumber",
-              "type": "string"
-            },
-            {
-              "$id": "BisNumber",
-              "type": "string"
-            }
-          ]
-        },
-        "type": {
-          "const": "RegisteredNaturalPerson",
-          "type": "string"
-        }
-      },
       "required": [
         "identifier",
         "type"
-      ]
+      ],
+      "properties": {
+        "identifier": {
+          "type": "string",
+          "$id": "InszNumber"
+        },
+        "type": {
+          "type": "string",
+          "const": "RegisteredNaturalPerson"
+        }
+      }
     },
     "attributes": {
       "type": "array",
@@ -36,115 +31,108 @@
           {
             "allOf": [
               {
-                "type": "object",
-                "properties": {
-                  "attribute": {
-                    "const": "NaturalPersonRegistration",
-                    "type": "string"
-                  }
-                },
-                "required": [
-                  "attribute"
-                ]
+                "type": "string",
+                "const": "NaturalPersonRegistration"
               },
               {
-                "type": "object",
                 "allOf": [
                   {
                     "type": "object",
+                    "required": [
+                      "value"
+                    ],
                     "properties": {
                       "value": {
-                        "$id": "NaturalPersonRegistration",
                         "type": "object",
+                        "required": [
+                          "person",
+                          "register"
+                        ],
                         "properties": {
                           "person": {
-                            "$id": "RegisteredNaturalPerson",
                             "type": "object",
-                            "properties": {
-                              "identifier": {
-                                "$id": "NaturalPersonIdentifier",
-                                "anyOf": [
-                                  {
-                                    "$id": "InszNumber",
-                                    "type": "string"
-                                  },
-                                  {
-                                    "$id": "BisNumber",
-                                    "type": "string"
-                                  }
-                                ]
-                              }
-                            },
                             "required": [
                               "identifier"
-                            ]
+                            ],
+                            "properties": {
+                              "identifier": {
+                                "anyOf": [
+                                  {
+                                    "type": "string",
+                                    "$id": "InszNumber"
+                                  },
+                                  {
+                                    "type": "string",
+                                    "$id": "BisNumber"
+                                  }
+                                ],
+                                "$id": "NaturalPersonIdentifier"
+                              }
+                            },
+                            "$id": "RegisteredNaturalPerson"
                           },
                           "register": {
                             "type": "object",
                             "properties": {}
                           }
                         },
-                        "required": [
-                          "person",
-                          "register"
-                        ]
+                        "$id": "NaturalPersonRegistration"
                       }
-                    },
-                    "required": [
-                      "value"
-                    ]
+                    }
                   },
                   {
                     "type": "object",
-                    "properties": {
-                      "effectivityStart": {
-                        "$id": "TemporalPosition",
-                        "anyOf": [
-                          {
-                            "$id": "DateTime",
-                            "format": "datetime",
-                            "type": "string"
-                          },
-                          {
-                            "$id": "Date",
-                            "type": "Date"
-                          },
-                          {
-                            "$id": "Month",
-                            "type": "string"
-                          },
-                          {
-                            "$id": "Year",
-                            "type": "string"
-                          }
-                        ]
-                      },
-                      "effectivityEnd": {
-                        "$id": "TemporalPosition",
-                        "anyOf": [
-                          {
-                            "$id": "DateTime",
-                            "format": "datetime",
-                            "type": "string"
-                          },
-                          {
-                            "$id": "Date",
-                            "type": "Date"
-                          },
-                          {
-                            "$id": "Month",
-                            "type": "string"
-                          },
-                          {
-                            "$id": "Year",
-                            "type": "string"
-                          }
-                        ]
-                      }
-                    },
                     "required": [
                       "effectivityStart"
-                    ]
+                    ],
+                    "properties": {
+                      "effectivityStart": {
+                        "anyOf": [
+                          {
+                            "type": "string",
+                            "$id": "DateTime",
+                            "format": "datetime"
+                          },
+                          {
+                            "type": "string",
+                            "$id": "Date",
+                            "format": "date-time"
+                          },
+                          {
+                            "type": "string",
+                            "$id": "Month"
+                          },
+                          {
+                            "type": "string",
+                            "$id": "Year"
+                          }
+                        ],
+                        "$id": "TemporalPosition"
+                      },
+                      "effectivityEnd": {
+                        "anyOf": [
+                          {
+                            "type": "string",
+                            "$id": "DateTime",
+                            "format": "datetime"
+                          },
+                          {
+                            "type": "string",
+                            "$id": "Date",
+                            "format": "date-time"
+                          },
+                          {
+                            "type": "string",
+                            "$id": "Month"
+                          },
+                          {
+                            "type": "string",
+                            "$id": "Year"
+                          }
+                        ],
+                        "$id": "TemporalPosition"
+                      }
+                    }
                   }
                 ]
               }
@@ -153,86 +141,79 @@
           {
             "allOf": [
               {
-                "type": "object",
-                "properties": {
-                  "attribute": {
-                    "const": "GivenName",
-                    "type": "string"
-                  }
-                },
-                "required": [
-                  "attribute"
-                ]
+                "type": "string",
+                "const": "GivenName"
               },
               {
-                "type": "object",
                 "allOf": [
                   {
                     "type": "object",
+                    "required": [
+                      "value"
+                    ],
                     "properties": {
                       "value": {
-                        "$id": "GivenName",
                         "type": "array",
                         "items": {
                           "type": "string"
-                        }
+                        },
+                        "$id": "GivenName"
                       }
-                    },
-                    "required": [
-                      "value"
-                    ]
+                    }
                   },
                   {
                     "type": "object",
-                    "properties": {
-                      "effectivityStart": {
-                        "$id": "TemporalPosition",
-                        "anyOf": [
-                          {
-                            "$id": "DateTime",
-                            "format": "datetime",
-                            "type": "string"
-                          },
-                          {
-                            "$id": "Date",
-                            "type": "Date"
-                          },
-                          {
-                            "$id": "Month",
-                            "type": "string"
-                          },
-                          {
-                            "$id": "Year",
-                            "type": "string"
-                          }
-                        ]
-                      },
-                      "effectivityEnd": {
-                        "$id": "TemporalPosition",
-                        "anyOf": [
-                          {
-                            "$id": "DateTime",
-                            "format": "datetime",
-                            "type": "string"
-                          },
-                          {
-                            "$id": "Date",
-                            "type": "Date"
-                          },
-                          {
-                            "$id": "Month",
-                            "type": "string"
-                          },
-                          {
-                            "$id": "Year",
-                            "type": "string"
-                          }
-                        ]
-                      }
-                    },
                     "required": [
                       "effectivityStart"
-                    ]
+                    ],
+                    "properties": {
+                      "effectivityStart": {
+                        "anyOf": [
+                          {
+                            "type": "string",
+                            "$id": "DateTime",
+                            "format": "datetime"
+                          },
+                          {
+                            "type": "string",
+                            "$id": "Date",
+                            "format": "date-time"
+                          },
+                          {
+                            "type": "string",
+                            "$id": "Month"
+                          },
+                          {
+                            "type": "string",
+                            "$id": "Year"
+                          }
+                        ],
+                        "$id": "TemporalPosition"
+                      },
+                      "effectivityEnd": {
+                        "anyOf": [
+                          {
+                            "type": "string",
+                            "$id": "DateTime",
+                            "format": "datetime"
+                          },
+                          {
+                            "type": "string",
+                            "$id": "Date",
+                            "format": "date-time"
+                          },
+                          {
+                            "type": "string",
+                            "$id": "Month"
+                          },
+                          {
+                            "type": "string",
+                            "$id": "Year"
+                          }
+                        ],
+                        "$id": "TemporalPosition"
+                      }
+                    }
                   }
                 ]
               }
@@ -241,86 +222,79 @@
           {
             "allOf": [
               {
-                "type": "object",
-                "properties": {
-                  "attribute": {
-                    "const": "FamilyName",
-                    "type": "string"
-                  }
-                },
-                "required": [
-                  "attribute"
-                ]
+                "type": "string",
+                "const": "FamilyName"
               },
               {
-                "type": "object",
                 "allOf": [
                   {
                     "type": "object",
+                    "required": [
+                      "value"
+                    ],
                     "properties": {
                       "value": {
-                        "$id": "FamilyName",
                         "type": "array",
                         "items": {
                           "type": "string"
-                        }
+                        },
+                        "$id": "FamilyName"
                       }
-                    },
-                    "required": [
-                      "value"
-                    ]
+                    }
                   },
                   {
                     "type": "object",
-                    "properties": {
-                      "effectivityStart": {
-                        "$id": "TemporalPosition",
-                        "anyOf": [
-                          {
-                            "$id": "DateTime",
-                            "format": "datetime",
-                            "type": "string"
-                          },
-                          {
-                            "$id": "Date",
-                            "type": "Date"
-                          },
-                          {
-                            "$id": "Month",
-                            "type": "string"
-                          },
-                          {
-                            "$id": "Year",
-                            "type": "string"
-                          }
-                        ]
-                      },
-                      "effectivityEnd": {
-                        "$id": "TemporalPosition",
-                        "anyOf": [
-                          {
-                            "$id": "DateTime",
-                            "format": "datetime",
-                            "type": "string"
-                          },
-                          {
-                            "$id": "Date",
-                            "type": "Date"
-                          },
-                          {
-                            "$id": "Month",
-                            "type": "string"
-                          },
-                          {
-                            "$id": "Year",
-                            "type": "string"
-                          }
-                        ]
-                      }
-                    },
                     "required": [
                       "effectivityStart"
-                    ]
+                    ],
+                    "properties": {
+                      "effectivityStart": {
+                        "anyOf": [
+                          {
+                            "type": "string",
+                            "$id": "DateTime",
+                            "format": "datetime"
+                          },
+                          {
+                            "type": "string",
+                            "$id": "Date",
+                            "format": "date-time"
+                          },
+                          {
+                            "type": "string",
+                            "$id": "Month"
+                          },
+                          {
+                            "type": "string",
+                            "$id": "Year"
+                          }
+                        ],
+                        "$id": "TemporalPosition"
+                      },
+                      "effectivityEnd": {
+                        "anyOf": [
+                          {
+                            "type": "string",
+                            "$id": "DateTime",
+                            "format": "datetime"
+                          },
+                          {
+                            "type": "string",
+                            "$id": "Date",
+                            "format": "date-time"
+                          },
+                          {
+                            "type": "string",
+                            "$id": "Month"
+                          },
+                          {
+                            "type": "string",
+                            "$id": "Year"
+                          }
+                        ],
+                        "$id": "TemporalPosition"
+                      }
+                    }
                   }
                 ]
               }
@@ -329,83 +303,80 @@
           {
             "allOf": [
               {
-                "type": "object",
-                "properties": {
-                  "attribute": {
-                    "const": "Sex",
-                    "type": "string"
-                  }
-                },
-                "required": [
-                  "attribute"
-                ]
+                "type": "string",
+                "const": "Sex"
               },
               {
-                "type": "object",
                 "allOf": [
                   {
                     "type": "object",
+                    "required": [
+                      "value"
+                    ],
                     "properties": {
                       "value": {
-                        "type": "string",
+                        "allOf": [
+                          {
+                            "type": "string"
+                          }
+                        ],
                         "$id": "Sex"
                       }
-                    },
-                    "required": [
-                      "value"
-                    ]
+                    }
                   },
                   {
                     "type": "object",
-                    "properties": {
-                      "effectivityStart": {
-                        "$id": "TemporalPosition",
-                        "anyOf": [
-                          {
-                            "$id": "DateTime",
-                            "format": "datetime",
-                            "type": "string"
-                          },
-                          {
-                            "$id": "Date",
-                            "type": "Date"
-                          },
-                          {
-                            "$id": "Month",
-                            "type": "string"
-                          },
-                          {
-                            "$id": "Year",
-                            "type": "string"
-                          }
-                        ]
-                      },
-                      "effectivityEnd": {
-                        "$id": "TemporalPosition",
-                        "anyOf": [
-                          {
-                            "$id": "DateTime",
-                            "format": "datetime",
-                            "type": "string"
-                          },
-                          {
-                            "$id": "Date",
-                            "type": "Date"
-                          },
-                          {
-                            "$id": "Month",
-                            "type": "string"
-                          },
-                          {
-                            "$id": "Year",
-                            "type": "string"
-                          }
-                        ]
-                      }
-                    },
                     "required": [
                       "effectivityStart"
-                    ]
+                    ],
+                    "properties": {
+                      "effectivityStart": {
+                        "anyOf": [
+                          {
+                            "type": "string",
+                            "$id": "DateTime",
+                            "format": "datetime"
+                          },
+                          {
+                            "type": "string",
+                            "$id": "Date",
+                            "format": "date-time"
+                          },
+                          {
+                            "type": "string",
+                            "$id": "Month"
+                          },
+                          {
+                            "type": "string",
+                            "$id": "Year"
+                          }
+                        ],
+                        "$id": "TemporalPosition"
+                      },
+                      "effectivityEnd": {
+                        "anyOf": [
+                          {
+                            "type": "string",
+                            "$id": "DateTime",
+                            "format": "datetime"
+                          },
+                          {
+                            "type": "string",
+                            "$id": "Date",
+                            "format": "date-time"
+                          },
+                          {
+                            "type": "string",
+                            "$id": "Month"
+                          },
+                          {
+                            "type": "string",
+                            "$id": "Year"
+                          }
+                        ],
+                        "$id": "TemporalPosition"
+                      }
+                    }
                   }
                 ]
               }
@@ -414,273 +385,93 @@
           {
             "allOf": [
               {
-                "type": "object",
-                "properties": {
-                  "attribute": {
-                    "const": "Birth",
-                    "type": "string"
-                  }
-                },
-                "required": [
-                  "attribute"
-                ]
+                "type": "string",
+                "const": "Birth"
               },
               {
-                "type": "object",
                 "allOf": [
                   {
                     "type": "object",
+                    "required": [
+                      "value"
+                    ],
                     "properties": {
                       "value": {
-                        "$id": "Birth",
                         "type": "object",
-                        "properties": {
-                          "person": {
-                            "$id": "RegisteredNaturalPerson",
-                            "type": "object",
-                            "properties": {
-                              "identifier": {
-                                "$id": "NaturalPersonIdentifier",
-                                "anyOf": [
-                                  {
-                                    "$id": "InszNumber",
-                                    "type": "string"
-                                  },
-                                  {
-                                    "$id": "BisNumber",
-                                    "type": "string"
-                                  }
-                                ]
-                              }
-                            },
-                            "required": [
-                              "identifier"
-                            ]
-                          },
-                          "birthTime": {
-                            "$id": "TemporalPosition",
-                            "anyOf": [
-                              {
-                                "$id": "DateTime",
-                                "format": "datetime",
-                                "type": "string"
-                              },
-                              {
-                                "$id": "Date",
-                                "type": "Date"
-                              },
-                              {
-                                "$id": "Month",
-                                "type": "string"
-                              },
-                              {
-                                "$id": "Year",
-                                "type": "string"
-                              }
-                            ]
-                          },
-                          "birthLocation": {
-                            "anyOf": [
-                              {
-                                "$id": "Municipality",
-                                "type": "object",
-                                "properties": {
-                                  "identifier": {
-                                    "type": "string"
-                                  }
-                                },
-                                "required": [
-                                  "identifier"
-                                ]
-                              },
-                              {
-                                "$id": "GlobalLocality",
-                                "type": "object",
-                                "properties": {
-                                  "localityName": {
-                                    "type": "string"
-                                  },
-                                  "postalCode": {
-                                    "type": "string"
-                                  },
-                                  "isoAdministrativeSubdivisionCode": {
-                                    "type": "array",
-                                    "items": {
-                                      "type": "string"
-                                    }
-                                  },
-                                  "nisCountryCode": {
-                                    "$id": "NisCountryCode",
-                                    "type": "string"
-                                  },
-                                  "isoAlpha2CountryCode": {
-                                    "$id": "Iso31661Alpha2Code",
-                                    "type": "string"
-                                  }
-                                },
-                                "required": [
-                                  "localityName",
-                                  "postalCode",
-                                  "isoAdministrativeSubdivisionCode",
-                                  "nisCountryCode",
-                                  "isoAlpha2CountryCode"
-                                ]
-                              }
-                            ]
-                          }
-                        },
                         "required": [
                           "person",
                           "birthTime",
                           "birthLocation"
-                        ]
-                      }
-                    },
-                    "required": [
-                      "value"
-                    ]
-                  },
-                  {
-                    "type": "object",
-                    "properties": {
-                      "effectivityStart": {
-                        "$id": "TemporalPosition",
-                        "anyOf": [
-                          {
-                            "$id": "DateTime",
-                            "format": "datetime",
-                            "type": "string"
-                          },
-                          {
-                            "$id": "Date",
-                            "type": "Date"
-                          },
-                          {
-                            "$id": "Month",
-                            "type": "string"
-                          },
-                          {
-                            "$id": "Year",
-                            "type": "string"
-                          }
-                        ]
-                      },
-                      "effectivityEnd": {
-                        "$id": "TemporalPosition",
-                        "anyOf": [
-                          {
-                            "$id": "DateTime",
-                            "format": "datetime",
-                            "type": "string"
-                          },
-                          {
-                            "$id": "Date",
-                            "type": "Date"
-                          },
-                          {
-                            "$id": "Month",
-                            "type": "string"
-                          },
-                          {
-                            "$id": "Year",
-                            "type": "string"
-                          }
-                        ]
-                      }
-                    },
-                    "required": [
-                      "effectivityStart"
-                    ]
-                  }
-                ]
-              }
-            ]
-          },
-          {
-            "allOf": [
-              {
-                "type": "object",
-                "properties": {
-                  "attribute": {
-                    "const": "Death",
-                    "type": "string"
-                  }
-                },
-                "required": [
-                  "attribute"
-                ]
-              },
-              {
-                "type": "object",
-                "allOf": [
-                  {
-                    "type": "object",
-                    "properties": {
-                      "value": {
-                        "$id": "Death",
-                        "type": "object",
+                        ],
                         "properties": {
                           "person": {
-                            "$id": "RegisteredNaturalPerson",
                             "type": "object",
-                            "properties": {
-                              "identifier": {
-                                "$id": "NaturalPersonIdentifier",
-                                "anyOf": [
-                                  {
-                                    "$id": "InszNumber",
-                                    "type": "string"
-                                  },
-                                  {
-                                    "$id": "BisNumber",
-                                    "type": "string"
-                                  }
-                                ]
-                              }
-                            },
                             "required": [
                               "identifier"
-                            ]
-                          },
-                          "deathTime": {
-                            "$id": "TemporalPosition",
-                            "anyOf": [
-                              {
-                                "$id": "DateTime",
-                                "format": "datetime",
-                                "type": "string"
-                              },
-                              {
-                                "$id": "Date",
-                                "type": "Date"
-                              },
-                              {
-                                "$id": "Month",
-                                "type": "string"
-                              },
-                              {
-                                "$id": "Year",
-                                "type": "string"
+                            ],
+                            "properties": {
+                              "identifier": {
+                                "anyOf": [
+                                  {
+                                    "type": "string",
+                                    "$id": "InszNumber"
+                                  },
+                                  {
+                                    "type": "string",
+                                    "$id": "BisNumber"
+                                  }
+                                ],
+                                "$id": "NaturalPersonIdentifier"
                               }
-                            ]
+                            },
+                            "$id": "RegisteredNaturalPerson"
                           },
-                          "deathLocation": {
+                          "birthTime": {
                             "anyOf": [
                               {
-                                "$id": "Municipality",
+                                "type": "string",
+                                "$id": "DateTime",
+                                "format": "datetime"
+                              },
+                              {
+                                "type": "string",
+                                "$id": "Date",
+                                "format": "date-time"
+                              },
+                              {
+                                "type": "string",
+                                "$id": "Month"
+                              },
+                              {
+                                "type": "string",
+                                "$id": "Year"
+                              }
+                            ],
+                            "$id": "TemporalPosition"
+                          },
+                          "birthLocation": {
+                            "anyOf": [
+                              {
                                 "type": "object",
+                                "required": [
+                                  "identifier"
+                                ],
                                 "properties": {
                                   "identifier": {
                                     "type": "string"
                                   }
                                 },
-                                "required": [
-                                  "identifier"
-                                ]
+                                "$id": "Municipality"
                               },
                               {
-                                "$id": "GlobalLocality",
                                 "type": "object",
+                                "required": [
+                                  "localityName",
+                                  "postalCode",
+                                  "isoAdministrativeSubdivisionCode",
+                                  "nisCountryCode",
+                                  "isoAlpha2CountryCode"
+                                ],
                                 "properties": {
                                   "localityName": {
                                     "type": "string"
@@ -695,87 +486,255 @@
                                     }
                                   },
                                   "nisCountryCode": {
-                                    "$id": "NisCountryCode",
-                                    "type": "string"
+                                    "type": "string",
+                                    "$id": "NisCountryCode"
                                   },
                                   "isoAlpha2CountryCode": {
-                                    "$id": "Iso31661Alpha2Code",
+                                    "type": "string",
+                                    "$id": "Iso31661Alpha2Code"
+                                  }
+                                },
+                                "$id": "GlobalLocality"
+                              }
+                            ]
+                          }
+                        },
+                        "$id": "Birth"
+                      }
+                    }
+                  },
+                  {
+                    "type": "object",
+                    "required": [
+                      "effectivityStart"
+                    ],
+                    "properties": {
+                      "effectivityStart": {
+                        "anyOf": [
+                          {
+                            "type": "string",
+                            "$id": "DateTime",
+                            "format": "datetime"
+                          },
+                          {
+                            "type": "string",
+                            "$id": "Date",
+                            "format": "date-time"
+                          },
+                          {
+                            "type": "string",
+                            "$id": "Month"
+                          },
+                          {
+                            "type": "string",
+                            "$id": "Year"
+                          }
+                        ],
+                        "$id": "TemporalPosition"
+                      },
+                      "effectivityEnd": {
+                        "anyOf": [
+                          {
+                            "type": "string",
+                            "$id": "DateTime",
+                            "format": "datetime"
+                          },
+                          {
+                            "type": "string",
+                            "$id": "Date",
+                            "format": "date-time"
+                          },
+                          {
+                            "type": "string",
+                            "$id": "Month"
+                          },
+                          {
+                            "type": "string",
+                            "$id": "Year"
+                          }
+                        ],
+                        "$id": "TemporalPosition"
+                      }
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "allOf": [
+              {
+                "type": "string",
+                "const": "Death"
+              },
+              {
+                "allOf": [
+                  {
+                    "type": "object",
+                    "required": [
+                      "value"
+                    ],
+                    "properties": {
+                      "value": {
+                        "type": "object",
+                        "required": [
+                          "person",
+                          "deathTime",
+                          "deathLocation"
+                        ],
+                        "properties": {
+                          "person": {
+                            "type": "object",
+                            "required": [
+                              "identifier"
+                            ],
+                            "properties": {
+                              "identifier": {
+                                "anyOf": [
+                                  {
+                                    "type": "string",
+                                    "$id": "InszNumber"
+                                  },
+                                  {
+                                    "type": "string",
+                                    "$id": "BisNumber"
+                                  }
+                                ],
+                                "$id": "NaturalPersonIdentifier"
+                              }
+                            },
+                            "$id": "RegisteredNaturalPerson"
+                          },
+                          "deathTime": {
+                            "anyOf": [
+                              {
+                                "type": "string",
+                                "$id": "DateTime",
+                                "format": "datetime"
+                              },
+                              {
+                                "type": "string",
+                                "$id": "Date",
+                                "format": "date-time"
+                              },
+                              {
+                                "type": "string",
+                                "$id": "Month"
+                              },
+                              {
+                                "type": "string",
+                                "$id": "Year"
+                              }
+                            ],
+                            "$id": "TemporalPosition"
+                          },
+                          "deathLocation": {
+                            "anyOf": [
+                              {
+                                "type": "object",
+                                "required": [
+                                  "identifier"
+                                ],
+                                "properties": {
+                                  "identifier": {
                                     "type": "string"
                                   }
                                 },
+                                "$id": "Municipality"
+                              },
+                              {
+                                "type": "object",
                                 "required": [
                                   "localityName",
                                   "postalCode",
                                   "isoAdministrativeSubdivisionCode",
                                   "nisCountryCode",
                                   "isoAlpha2CountryCode"
-                                ]
+                                ],
+                                "properties": {
+                                  "localityName": {
+                                    "type": "string"
+                                  },
+                                  "postalCode": {
+                                    "type": "string"
+                                  },
+                                  "isoAdministrativeSubdivisionCode": {
+                                    "type": "array",
+                                    "items": {
+                                      "type": "string"
+                                    }
+                                  },
+                                  "nisCountryCode": {
+                                    "type": "string",
+                                    "$id": "NisCountryCode"
+                                  },
+                                  "isoAlpha2CountryCode": {
+                                    "type": "string",
+                                    "$id": "Iso31661Alpha2Code"
+                                  }
+                                },
+                                "$id": "GlobalLocality"
                               }
                             ]
                           }
                         },
-                        "required": [
-                          "person",
-                          "deathTime",
-                          "deathLocation"
-                        ]
+                        "$id": "Death"
                       }
-                    },
-                    "required": [
-                      "value"
-                    ]
+                    }
                   },
                   {
                     "type": "object",
-                    "properties": {
-                      "effectivityStart": {
-                        "$id": "TemporalPosition",
-                        "anyOf": [
-                          {
-                            "$id": "DateTime",
-                            "format": "datetime",
-                            "type": "string"
-                          },
-                          {
-                            "$id": "Date",
-                            "type": "Date"
-                          },
-                          {
-                            "$id": "Month",
-                            "type": "string"
-                          },
-                          {
-                            "$id": "Year",
-                            "type": "string"
-                          }
-                        ]
-                      },
-                      "effectivityEnd": {
-                        "$id": "TemporalPosition",
-                        "anyOf": [
-                          {
-                            "$id": "DateTime",
-                            "format": "datetime",
-                            "type": "string"
-                          },
-                          {
-                            "$id": "Date",
-                            "type": "Date"
-                          },
-                          {
-                            "$id": "Month",
-                            "type": "string"
-                          },
-                          {
-                            "$id": "Year",
-                            "type": "string"
-                          }
-                        ]
-                      }
-                    },
                     "required": [
                       "effectivityStart"
-                    ]
+                    ],
+                    "properties": {
+                      "effectivityStart": {
+                        "anyOf": [
+                          {
+                            "type": "string",
+                            "$id": "DateTime",
+                            "format": "datetime"
+                          },
+                          {
+                            "type": "string",
+                            "$id": "Date",
+                            "format": "date-time"
+                          },
+                          {
+                            "type": "string",
+                            "$id": "Month"
+                          },
+                          {
+                            "type": "string",
+                            "$id": "Year"
+                          }
+                        ],
+                        "$id": "TemporalPosition"
+                      },
+                      "effectivityEnd": {
+                        "anyOf": [
+                          {
+                            "type": "string",
+                            "$id": "DateTime",
+                            "format": "datetime"
+                          },
+                          {
+                            "type": "string",
+                            "$id": "Date",
+                            "format": "date-time"
+                          },
+                          {
+                            "type": "string",
+                            "$id": "Month"
+                          },
+                          {
+                            "type": "string",
+                            "$id": "Year"
+                          }
+                        ],
+                        "$id": "TemporalPosition"
+                      }
+                    }
                   }
                 ]
               }
@@ -784,9 +743,5 @@
         ]
       }
     }
-  },
-  "required": [
-    "subject",
-    "attributes"
-  ]
+  }
 }

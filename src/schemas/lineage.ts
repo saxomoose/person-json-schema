@@ -1,15 +1,12 @@
-import { Type } from "@sinclair/typebox"
+import { TSchema, Type } from "typebox"
 import { Identifier } from "./identifier"
+import { TemporalPosition } from "./temporal"
 
 const Event = Type.Object({
-    identifier: Identifier
-})
-
-const Lineage = Type.Object({
-    event: Event
+    identifier: Identifier,
+    occurenceTime: TemporalPosition
 })
 
 export {
-    Event,
-    Lineage
+    Event
 }

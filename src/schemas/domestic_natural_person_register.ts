@@ -1,7 +1,10 @@
-import { Type } from "@sinclair/typebox";
+import { Type } from "typebox";
 import { Codelist } from "./codelist";
 import { CivilRegistrationOfficer } from "./municipality_governance_role";
-import { Register } from "./register";
+import { Register, UpdateValue } from "./register";
+import { LegalAct } from "./legal";
+import { LegalCase } from "./legal_case";
+import { GivenName } from "./name";
 
 const NaturalPersonRegister = Type.Object({});
 
@@ -30,8 +33,37 @@ const PersonRegisterDocument = Type.Object({
     identifier: DabsNumber
 })
 
+// Aanvraag tot wijziging van de voornaam
+const GivenNameChangeRequest = Type.Intersect([
+    LegalAct,
+    Type.Object({
+        eventType: Type.Literal("GivenNameChangeRequest"),
+        legalCase: LegalCase,
+    }),
+    UpdateValue(GivenName)
+], { $id: "GivenNameChangeRequest" });
+// const GivenNameChangeRequestStatement = LegalStatement(RegisteredNaturalPerson, GivenName);
+
+// Akte van voornaamsverandering
+const GivenNameChangeDocument = Type.Object({
+    identifier: DabsNumber
+});
+// Vergunning (rechtshandeling) van voornaamsverandering
+const GivenNameChangeOutcome = Type.Intersect([
+    LegalAct,
+    Type.Object({
+        eventType: Type.Literal("GivenNameChangeRequest"),
+        legalCase: LegalCase,
+    }),
+    UpdateValue(GivenName)
+], { $id: "GivenNameChangeOutcome" });
+// const GivenNameChangeOutcomeStatement = LegalStatement(RegisteredNaturalPerson, GivenName, { effectivityPeriod: true });
+
+
 export {
     DabsNumber,
+    GivenNameChangeRequest,
+    GivenNameChangeOutcome,
     NaturalPersonIdentifier,
     NaturalPersonRegistration,
     RegisteredNaturalPerson

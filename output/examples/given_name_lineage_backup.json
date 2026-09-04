@@ -1,0 +1,32 @@
+{
+  "subject": {
+    "identifier": "123456789",
+    "type": "RegisteredNaturalPerson"
+  },
+  "attribute": "GivenName",
+  "evaluationTime": "2025-07-01T00:00:00Z",
+  "lineage": [
+    {
+      "identifier": "REQ001",
+      "occurenceTime": "2025-05-15T10:00:00Z",
+      "case": {
+        "identifier": "CASE2025001"
+      }
+    },
+    {
+      "identifier": "OUT001",
+      "occurenceTime": "2025-06-20T14:30:00Z",
+      "case": {
+        "identifier": "CASE2025001"
+      },
+      "document": {
+        "identifier": "DABS2025001"
+      }
+    },
+    {
+      "identifier": "CHG001",
+      "oldValue": ["John"],
+      "newValue": ["John", "James"]
+    }
+  ]
+}

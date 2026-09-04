@@ -1,4 +1,4 @@
-import { Type } from "@sinclair/typebox";
+import { Type } from "typebox";
 import { NisCountryCode } from "./country";
 import { Municipality } from "./domestic_municipality_register";
 import { DomesticPostalCode } from "./domestic_postal_code_register";

@@ -1,8 +1,8 @@
-import { Type } from "@sinclair/typebox";
+import { Type } from "typebox";
 import { Identifier } from "./identifier";
 
 const Document = Type.Object({
-    identifier: Identifier,
+    identifier: Identifier
 });
 
 export {

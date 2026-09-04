@@ -1,4 +1,4 @@
-import { TSchema, Type } from "@sinclair/typebox";
+import { TSchema, Type } from "typebox";
 
 const Identifier = Type.String({ $id: "Identifier" });
 

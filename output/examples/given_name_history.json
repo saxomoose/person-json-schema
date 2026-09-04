@@ -1,24 +1,25 @@
 {
   "subject": {
-    "identifier": {
-      "$id": "InszNumber",
-      "type": "string",
-      "value": "12345678901"
-    },
+    "identifier": "123456789",
     "type": "RegisteredNaturalPerson"
   },
   "attribute": {
     "attribute": "GivenName"
   },
-  "history": {
-    "value": [
-      "John",
-      "Jonathan"
-    ],
-    "event": {
-      "identifier": "EVT123456"
+  "history": [
+    {
+      "value": ["John"],
+      "effectivityStart": "2024-01-01T00:00:00Z",
+      "effectivityEnd": "2025-06-30T23:59:59Z"
     },
-    "effectivityStart": "2020-01-01T00:00:00Z",
-    "effectivityEnd": "2023-01-01T00:00:00Z"
-  }
+    {
+      "value": ["John", "James"],
+      "effectivityStart": "2025-07-01T00:00:00Z",
+      "effectivityEnd": "2026-03-15T23:59:59Z"
+    },
+    {
+      "value": ["John James"],
+      "effectivityStart": "2026-03-16T00:00:00Z"
+    }
+  ]
 }

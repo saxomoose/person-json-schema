@@ -1,18 +1,25 @@
-import { TSchema, Type } from "@sinclair/typebox";
-import { ValueOptions } from "../utils";
 import { Attribute, Entity, Value } from "./eav";
-import { LegalEvent } from "./legal_event";
+import { Identifier } from "./identifier";
+import { TemporalPosition } from "./temporal";
+import { TSchema, Type } from "typebox";
+import { ValueOptions } from "../utils";
+import { Event } from "./lineage"
 
-const LegalStatement = <Entity extends TSchema, Attribute extends TSchema>(entity: Entity, attribute: Attribute, valueOptions?: ValueOptions) => {
-    return Type.Object({
-        event: LegalEvent,
-        subject: Entity(entity),
-        attribute: Attribute(attribute),
-        value: Value(attribute, valueOptions)
-    });
-};
+const LegalEvent = Type.Intersect([Event], { $id: "LegalEvent" });
+
+const LegalAct = Type.Intersect([LegalEvent], { $id: "LegalAct" });
+
+// const LegalStatement = <Entity extends TSchema, Attribute extends TSchema>(entity: Entity, attribute: Attribute, valueOptions?: ValueOptions) => {
+//     return Type.Object({
+//         event: LegalEvent,
+//         subject: Entity(entity),
+//         attribute: Attribute(attribute),
+//         value: Value(attribute, valueOptions)
+//     });
+// };
 
 export {
-    LegalStatement
+    LegalAct,
+    LegalEvent
 };
 

@@ -2,223 +2,291 @@
   "$id": "given_name_lineage",
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "type": "object",
+  "required": [
+    "subject",
+    "attribute",
+    "evaluationTime",
+    "lineage"
+  ],
   "properties": {
     "subject": {
       "type": "object",
-      "properties": {
-        "identifier": {
-          "$id": "NaturalPersonIdentifier",
-          "anyOf": [
-            {
-              "$id": "InszNumber",
-              "type": "string"
-            },
-            {
-              "$id": "BisNumber",
-              "type": "string"
-            }
-          ]
-        },
-        "type": {
-          "const": "RegisteredNaturalPerson",
-          "type": "string"
-        }
-      },
       "required": [
         "identifier",
         "type"
-      ]
+      ],
+      "properties": {
+        "identifier": {
+          "type": "string",
+          "$id": "InszNumber"
+        },
+        "type": {
+          "type": "string",
+          "const": "RegisteredNaturalPerson"
+        }
+      }
     },
     "attribute": {
-      "type": "object",
-      "properties": {
-        "attribute": {
-          "const": "GivenName",
-          "type": "string"
-        }
-      },
-      "required": [
-        "attribute"
-      ]
+      "type": "string",
+      "const": "GivenName"
     },
     "evaluationTime": {
+      "type": "string",
       "$id": "DateTime",
-      "format": "datetime",
-      "type": "string"
+      "format": "datetime"
     },
     "lineage": {
       "type": "array",
       "items": {
         "anyOf": [
           {
-            "$id": "GivenNameChangeRequest",
-            "type": "object",
             "allOf": [
               {
-                "$id": "LegalAct",
-                "type": "object",
-                "properties": {
-                  "identifier": {
-                    "$id": "Identifier",
-                    "type": "string"
-                  },
-                  "occurenceTime": {
-                    "$id": "TemporalPosition",
-                    "anyOf": [
-                      {
-                        "$id": "DateTime",
-                        "format": "datetime",
-                        "type": "string"
-                      },
-                      {
-                        "$id": "Date",
-                        "type": "Date"
-                      },
-                      {
-                        "$id": "Month",
-                        "type": "string"
-                      },
-                      {
-                        "$id": "Year",
-                        "type": "string"
-                      }
-                    ]
-                  }
-                },
-                "required": [
-                  "identifier",
-                  "occurenceTime"
-                ]
-              },
-              {
-                "type": "object",
-                "properties": {
-                  "case": {
-                    "type": "object",
-                    "properties": {
-                      "identifier": {
-                        "$id": "Identifier",
-                        "type": "string"
-                      }
-                    },
-                    "required": [
-                      "identifier"
-                    ]
-                  }
-                },
-                "required": [
-                  "case"
-                ]
-              }
-            ]
-          },
-          {
-            "$id": "GivenNameChangeOutcome",
-            "allOf": [
-              {
-                "$id": "LegalOutcome",
-                "type": "object",
                 "allOf": [
                   {
-                    "$id": "LegalAct",
-                    "type": "object",
-                    "properties": {
-                      "identifier": {
-                        "$id": "Identifier",
-                        "type": "string"
-                      },
-                      "occurenceTime": {
-                        "$id": "TemporalPosition",
-                        "anyOf": [
-                          {
-                            "$id": "DateTime",
-                            "format": "datetime",
-                            "type": "string"
-                          },
-                          {
-                            "$id": "Date",
-                            "type": "Date"
-                          },
-                          {
-                            "$id": "Month",
-                            "type": "string"
-                          },
-                          {
-                            "$id": "Year",
-                            "type": "string"
-                          }
-                        ]
-                      }
-                    },
-                    "required": [
-                      "identifier",
-                      "occurenceTime"
-                    ]
-                  },
-                  {
-                    "type": "object",
-                    "properties": {
-                      "case": {
+                    "allOf": [
+                      {
                         "type": "object",
+                        "required": [
+                          "identifier",
+                          "occurenceTime"
+                        ],
                         "properties": {
                           "identifier": {
-                            "$id": "Identifier",
-                            "type": "string"
+                            "type": "string",
+                            "$id": "Identifier"
+                          },
+                          "occurenceTime": {
+                            "anyOf": [
+                              {
+                                "type": "string",
+                                "$id": "DateTime",
+                                "format": "datetime"
+                              },
+                              {
+                                "type": "string",
+                                "$id": "Date",
+                                "format": "date-time"
+                              },
+                              {
+                                "type": "string",
+                                "$id": "Month"
+                              },
+                              {
+                                "type": "string",
+                                "$id": "Year"
+                              }
+                            ],
+                            "$id": "TemporalPosition"
                           }
-                        },
-                        "required": [
-                          "identifier"
-                        ]
+                        }
                       }
-                    },
-                    "required": [
-                      "case"
-                    ]
+                    ],
+                    "$id": "LegalEvent"
                   }
-                ]
+                ],
+                "$id": "LegalAct"
               },
               {
                 "type": "object",
+                "required": [
+                  "eventType",
+                  "legalCase"
+                ],
                 "properties": {
-                  "document": {
+                  "eventType": {
+                    "type": "string",
+                    "const": "GivenNameChangeRequest"
+                  },
+                  "legalCase": {
                     "type": "object",
-                    "properties": {
-                      "identifier": {
-                        "$id": "DabsNumber",
-                        "type": "string"
-                      }
-                    },
                     "required": [
                       "identifier"
-                    ]
+                    ],
+                    "properties": {
+                      "identifier": {
+                        "type": "string",
+                        "$id": "Identifier"
+                      }
+                    }
                   }
-                },
+                }
+              },
+              {
+                "type": "object",
                 "required": [
-                  "document"
-                ]
+                  "oldValue",
+                  "newValue",
+                  "effectivtyStart"
+                ],
+                "properties": {
+                  "oldValue": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    },
+                    "$id": "GivenName"
+                  },
+                  "newValue": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    },
+                    "$id": "GivenName"
+                  },
+                  "effectivtyStart": {
+                    "anyOf": [
+                      {
+                        "type": "string",
+                        "$id": "DateTime",
+                        "format": "datetime"
+                      },
+                      {
+                        "type": "string",
+                        "$id": "Date",
+                        "format": "date-time"
+                      },
+                      {
+                        "type": "string",
+                        "$id": "Month"
+                      },
+                      {
+                        "type": "string",
+                        "$id": "Year"
+                      }
+                    ],
+                    "$id": "TemporalPosition"
+                  }
+                }
               }
-            ]
+            ],
+            "$id": "GivenNameChangeRequest"
           },
           {
-            "type": "object",
-            "properties": {
-              "identifier": {
-                "$id": "Identifier",
-                "type": "string"
+            "allOf": [
+              {
+                "allOf": [
+                  {
+                    "allOf": [
+                      {
+                        "type": "object",
+                        "required": [
+                          "identifier",
+                          "occurenceTime"
+                        ],
+                        "properties": {
+                          "identifier": {
+                            "type": "string",
+                            "$id": "Identifier"
+                          },
+                          "occurenceTime": {
+                            "anyOf": [
+                              {
+                                "type": "string",
+                                "$id": "DateTime",
+                                "format": "datetime"
+                              },
+                              {
+                                "type": "string",
+                                "$id": "Date",
+                                "format": "date-time"
+                              },
+                              {
+                                "type": "string",
+                                "$id": "Month"
+                              },
+                              {
+                                "type": "string",
+                                "$id": "Year"
+                              }
+                            ],
+                            "$id": "TemporalPosition"
+                          }
+                        }
+                      }
+                    ],
+                    "$id": "LegalEvent"
+                  }
+                ],
+                "$id": "LegalAct"
+              },
+              {
+                "type": "object",
+                "required": [
+                  "eventType",
+                  "legalCase"
+                ],
+                "properties": {
+                  "eventType": {
+                    "type": "string",
+                    "const": "GivenNameChangeRequest"
+                  },
+                  "legalCase": {
+                    "type": "object",
+                    "required": [
+                      "identifier"
+                    ],
+                    "properties": {
+                      "identifier": {
+                        "type": "string",
+                        "$id": "Identifier"
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "type": "object",
+                "required": [
+                  "oldValue",
+                  "newValue",
+                  "effectivtyStart"
+                ],
+                "properties": {
+                  "oldValue": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    },
+                    "$id": "GivenName"
+                  },
+                  "newValue": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    },
+                    "$id": "GivenName"
+                  },
+                  "effectivtyStart": {
+                    "anyOf": [
+                      {
+                        "type": "string",
+                        "$id": "DateTime",
+                        "format": "datetime"
+                      },
+                      {
+                        "type": "string",
+                        "$id": "Date",
+                        "format": "date-time"
+                      },
+                      {
+                        "type": "string",
+                        "$id": "Month"
+                      },
+                      {
+                        "type": "string",
+                        "$id": "Year"
+                      }
+                    ],
+                    "$id": "TemporalPosition"
+                  }
+                }
               }
-            },
-            "required": [
-              "identifier"
-            ]
+            ],
+            "$id": "GivenNameChangeOutcome"
           }
         ]
       }
     }
-  },
-  "required": [
-    "subject",
-    "attribute",
-    "evaluationTime",
-    "lineage"
-  ]
+  }
 }

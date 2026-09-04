@@ -1,4 +1,4 @@
-import { Type } from "@sinclair/typebox";
+import { Type } from "typebox";
 import { CountryRelationship } from "./country_relationship";
 import { Country } from "./country";
 

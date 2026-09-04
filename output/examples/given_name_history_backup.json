@@ -1,0 +1,24 @@
+{
+  "subject": {
+    "identifier": {
+      "$id": "InszNumber",
+      "type": "string",
+      "value": "12345678901"
+    },
+    "type": "RegisteredNaturalPerson"
+  },
+  "attribute": {
+    "attribute": "GivenName"
+  },
+  "history": {
+    "value": [
+      "John",
+      "Jonathan"
+    ],
+    "event": {
+      "identifier": "EVT123456"
+    },
+    "effectivityStart": "2020-01-01T00:00:00Z",
+    "effectivityEnd": "2023-01-01T00:00:00Z"
+  }
+}

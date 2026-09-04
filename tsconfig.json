@@ -2,15 +2,17 @@
   "compileOnSave": true,
   "compilerOptions": {
     "allowJs": true,
-    "esModuleInterop": true,                          
+    "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
     "module": "CommonJS",
-    "outDir": "build",                       
+    "rootDir": "./src",
+    "outDir": "build",
     "skipLibCheck": true,
     "sourceMap": true,
-    "strict": true,                                
-    "strictNullChecks": true,                                 /* Skip type checking all .d.ts files. */
-    "target": "ES2017",                             
+    "strict": true,
+    "strictNullChecks": true,
+    "target": "ES2017",
+    "types": ["node"]
   },
   "include": ["src/**/*"],
 }

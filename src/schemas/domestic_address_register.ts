@@ -1,4 +1,4 @@
-import { Type } from "@sinclair/typebox";
+import { Type } from "typebox";
 import { BestIdentifier } from "./best";
 import { AdministrativeLanguage } from "./domestic_municipality_register";
 import { StreetNameValue } from "./domestic_street_name_register";

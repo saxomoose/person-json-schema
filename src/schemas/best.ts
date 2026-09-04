@@ -1,4 +1,4 @@
-import { Type } from "@sinclair/typebox";
+import { Type } from "typebox";
 
 const BestIdentifier = Type.Object({
     namespace: Type.String({ format: "uri" }),

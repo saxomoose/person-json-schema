@@ -1,4 +1,4 @@
-import { Type } from "@sinclair/typebox";
+import { Type } from "typebox";
 
 const Iso31661Alpha2Code = Type.String({ $id: "Iso31661Alpha2Code" });
 const Iso31661Alpha3Code = Type.String();

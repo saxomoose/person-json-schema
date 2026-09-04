@@ -1,4 +1,4 @@
-import { Type } from "@sinclair/typebox";
+import { Type } from "typebox";
 
 const Email = Type.String({ format: "email" });
 const GlobalPhoneNumber = Type.Object({

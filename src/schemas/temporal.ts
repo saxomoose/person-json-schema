@@ -1,9 +1,9 @@
-import { Type } from "@sinclair/typebox";
+import { Type } from "typebox";
 import { Codelist } from "./codelist";
 
 const Year = Type.String({ $id: "Year" });
 const Month = Type.String({ $id: "Month" });
-const Date = Type.Date({ $id: "Date" });
+const Date = Type.String({ $id: "Date", format: "date-time" });
 const DateTime = Type.String({ $id: "DateTime", format: "datetime" });
 
 const TemporalPosition = Type.Union([DateTime, Date, Month, Year], { $id: "TemporalPosition" });

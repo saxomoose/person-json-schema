@@ -1,6 +1,5 @@
-import { Type } from "@sinclair/typebox";
+import { Type } from "typebox";
 import { BelgianOfficialLanguage } from "./language";
-import { AttributeValue } from "./eav";
 import { NisAdministrativeUnitCode } from "./nis";
 
 const MunicipalityRegister = Type.Object({});

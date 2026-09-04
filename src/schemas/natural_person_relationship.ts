@@ -1,4 +1,4 @@
-import { Type } from "@sinclair/typebox";
+import { Type } from "typebox";
 import { RegisteredNaturalPerson } from "./domestic_natural_person_register";
 
 const PersonRelationship = Type.Object({

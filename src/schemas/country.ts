@@ -1,4 +1,4 @@
-import { Type } from "@sinclair/typebox";
+import { Type } from "typebox";
 import { Iso31661Alpha2Code } from "./iso";
 
 const CountryRegister = Type.Object({});

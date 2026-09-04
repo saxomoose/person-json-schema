@@ -27,8 +27,16 @@
       }
     },
     "attribute": {
-      "type": "string",
-      "const": "GivenName"
+      "type": "object",
+      "required": [
+        "attribute"
+      ],
+      "properties": {
+        "attribute": {
+          "type": "string",
+          "const": "GivenName"
+        }
+      }
     },
     "evaluationTime": {
       "type": "string",
@@ -219,7 +227,7 @@
                 "properties": {
                   "eventType": {
                     "type": "string",
-                    "const": "GivenNameChangeRequest"
+                    "const": "GivenNameChangeOutcome"
                   },
                   "legalCase": {
                     "type": "object",

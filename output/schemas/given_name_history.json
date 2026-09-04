@@ -26,8 +26,16 @@
       }
     },
     "attribute": {
-      "type": "string",
-      "const": "GivenName"
+      "type": "object",
+      "required": [
+        "attribute"
+      ],
+      "properties": {
+        "attribute": {
+          "type": "string",
+          "const": "GivenName"
+        }
+      }
     },
     "history": {
       "type": "array",

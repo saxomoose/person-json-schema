@@ -9,7 +9,9 @@ const Entity = <T extends TSchema>(type: T): TSchema => {
 };
 
 const Attribute = <T extends TSchema>(type: T): TSchema => {
-    return Type.Literal((type as any).$id)
+    return Type.Object({
+        attribute: Type.Literal((type as any).$id)
+    })
 };
 
 const Value = <T extends TSchema>(type: T): TSchema => {

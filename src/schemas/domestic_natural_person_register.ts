@@ -52,7 +52,7 @@ const GivenNameChangeDocument = Type.Object({
 const GivenNameChangeOutcome = Type.Intersect([
     LegalAct,
     Type.Object({
-        eventType: Type.Literal("GivenNameChangeRequest"),
+        eventType: Type.Literal("GivenNameChangeOutcome"),
         legalCase: LegalCase,
     }),
     UpdateValue(GivenName)

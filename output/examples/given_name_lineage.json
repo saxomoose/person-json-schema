@@ -3,7 +3,9 @@
     "identifier": "123456789",
     "type": "RegisteredNaturalPerson"
   },
-  "attribute": "GivenName",
+   "attribute": {
+    "attribute": "GivenName"
+  },
   "evaluationTime": "2026-09-04T00:00:00Z",
   "lineage": [
     {

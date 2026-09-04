@@ -31,8 +31,16 @@
           {
             "allOf": [
               {
-                "type": "string",
-                "const": "NaturalPersonRegistration"
+                "type": "object",
+                "required": [
+                  "attribute"
+                ],
+                "properties": {
+                  "attribute": {
+                    "type": "string",
+                    "const": "NaturalPersonRegistration"
+                  }
+                }
               },
               {
                 "allOf": [
@@ -141,8 +149,16 @@
           {
             "allOf": [
               {
-                "type": "string",
-                "const": "GivenName"
+                "type": "object",
+                "required": [
+                  "attribute"
+                ],
+                "properties": {
+                  "attribute": {
+                    "type": "string",
+                    "const": "GivenName"
+                  }
+                }
               },
               {
                 "allOf": [
@@ -222,8 +238,16 @@
           {
             "allOf": [
               {
-                "type": "string",
-                "const": "FamilyName"
+                "type": "object",
+                "required": [
+                  "attribute"
+                ],
+                "properties": {
+                  "attribute": {
+                    "type": "string",
+                    "const": "FamilyName"
+                  }
+                }
               },
               {
                 "allOf": [
@@ -303,8 +327,16 @@
           {
             "allOf": [
               {
-                "type": "string",
-                "const": "Sex"
+                "type": "object",
+                "required": [
+                  "attribute"
+                ],
+                "properties": {
+                  "attribute": {
+                    "type": "string",
+                    "const": "Sex"
+                  }
+                }
               },
               {
                 "allOf": [
@@ -385,8 +417,16 @@
           {
             "allOf": [
               {
-                "type": "string",
-                "const": "Birth"
+                "type": "object",
+                "required": [
+                  "attribute"
+                ],
+                "properties": {
+                  "attribute": {
+                    "type": "string",
+                    "const": "Birth"
+                  }
+                }
               },
               {
                 "allOf": [
@@ -564,8 +604,16 @@
           {
             "allOf": [
               {
-                "type": "string",
-                "const": "Death"
+                "type": "object",
+                "required": [
+                  "attribute"
+                ],
+                "properties": {
+                  "attribute": {
+                    "type": "string",
+                    "const": "Death"
+                  }
+                }
               },
               {
                 "allOf": [

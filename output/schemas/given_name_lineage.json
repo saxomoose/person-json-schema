@@ -5,7 +5,7 @@
   "required": [
     "subject",
     "attribute",
-    "evaluationTime",
+    "cutOffTime",
     "lineage"
   ],
   "properties": {
@@ -38,7 +38,7 @@
         }
       }
     },
-    "evaluationTime": {
+    "cutOffTime": {
       "type": "string",
       "$id": "DateTime",
       "format": "datetime"

@@ -6,7 +6,7 @@
    "attribute": {
     "attribute": "GivenName"
   },
-  "evaluationTime": "2026-09-04T00:00:00Z",
+  "cutOffTime": "2026-09-04T00:00:00Z",
   "lineage": [
     {
       "identifier": "request-001",

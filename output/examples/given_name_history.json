@@ -6,6 +6,7 @@
   "attribute": {
     "attribute": "GivenName"
   },
+  "cutOffTime": "2026-09-04T00:00:00Z",
   "history": [
     {
       "value": ["John"],

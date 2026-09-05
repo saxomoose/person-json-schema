@@ -5,6 +5,7 @@
   "required": [
     "subject",
     "attribute",
+    "cutOffTime",
     "history"
   ],
   "properties": {
@@ -36,6 +37,11 @@
           "const": "GivenName"
         }
       }
+    },
+    "cutOffTime": {
+      "type": "string",
+      "$id": "DateTime",
+      "format": "datetime"
     },
     "history": {
       "type": "array",
